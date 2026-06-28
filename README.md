@@ -1,24 +1,37 @@
-# README
+# HoopLog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ概要
 
-Things you may want to cover:
+HoopLogは、NBAファンが観戦記録を残し、推し選手を管理できるWebアプリです。
 
-* Ruby version
+SNSでは流れてしまう観戦の思い出や推し選手の活躍を記録し、後から振り返ることを目的としています。
 
-* System dependencies
+将来的には、同じチーム・同じ選手を応援するファン同士が交流できるサービスを目指しています。
 
-* Configuration
+---
 
-* Database creation
+## MVP機能
 
-* Database initialization
+- ユーザー登録・ログイン
+- 観戦記録の投稿
+- 観戦記録一覧表示
+- 観戦記録詳細表示
+- 観戦記録編集・削除
+- 推し選手の登録・管理
+- 観戦記録と推し選手の紐付け
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## 使用技術
 
-* Deployment instructions
+- Ruby 3.2.0
+- Ruby on Rails 7.1.6
+- MySQL
+- Git
+- GitHub
 
-* ...
+---
+
+## 開発状況
+
+現在はMVPを開発中です。
