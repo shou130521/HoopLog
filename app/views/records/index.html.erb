@@ -1,1 +1,9 @@
 <h1>観戦記録一覧</h1>
+
+<% @records.each do |record| %>
+  <h2><%= record.title %></h2>
+  <p><%= record.watched_on %></p>
+  <p><%= truncate(record.body, length: 100) %></p>
+
+  <%= link_to "詳細", record_path(record) %>
+<% end %>
