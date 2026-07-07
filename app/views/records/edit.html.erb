@@ -1,5 +1,16 @@
 <h1>観戦記録を編集</h1>
 
+<% if @record.errors.any? %>
+  <div>
+    <p><%= @record.errors.count %>件のエラーがあります。</p>
+    <ul>
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @record do |f| %>
   <div>
     <%= f.label :title, "タイトル" %><br>
