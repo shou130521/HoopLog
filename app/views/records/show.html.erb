@@ -1,0 +1,20 @@
+<h1><%= @record.title %></h1>
+
+<p>観戦日：<%= @record.watched_on %></p>
+
+<p><%= @record.body %></p>
+
+<% if @record.user == current_user %>
+  <%= link_to "編集", edit_record_path(@record) %>
+
+  <%= link_to "削除",
+              record_path(@record),
+              data: {
+                turbo_method: :delete,
+                turbo_confirm: "この観戦記録を削除しますか？"
+              } %>
+<% end %>
+
+<br>
+
+<%= link_to "一覧に戻る", records_path %>
