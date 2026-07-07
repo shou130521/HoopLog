@@ -4,4 +4,15 @@
 
 <p><%= @record.body %></p>
 
+<%= link_to "編集", edit_record_path(@record) %>
+
+<%= link_to "削除",
+            record_path(@record),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "この観戦記録を削除しますか？"
+            } %>
+
+<br>
+
 <%= link_to "一覧に戻る", records_path %>
