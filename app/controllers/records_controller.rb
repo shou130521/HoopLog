@@ -1,5 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     @records = Record.order(created_at: :desc)
@@ -48,5 +49,10 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(:title, :body, :watched_on)
+  end
+
+  def correct_user
+    @record = Record.find(params[:id])
+    redirect_to records_path, alert: "権限がありません。" unless @record.user == current_user
   end
 end
