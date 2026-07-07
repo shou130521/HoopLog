@@ -1,1 +1,22 @@
 <h1>観戦記録を投稿</h1>
+
+<%= form_with model: @record do |f| %>
+  <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :watched_on, "観戦日" %><br>
+    <%= f.date_field :watched_on %>
+  </div>
+
+  <div>
+    <%= f.label :body, "感想" %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit "投稿する" %>
+  </div>
+<% end %>
