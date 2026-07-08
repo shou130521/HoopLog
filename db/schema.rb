@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_07_06_103749) do
+ActiveRecord::Schema[7.1].define(version: 2026_07_08_112754) do
+  create_table "favorite_players", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "team"
+    t.string "position"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorite_players_on_user_id"
+  end
+
   create_table "records", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -33,5 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_07_06_103749) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorite_players", "users"
   add_foreign_key "records", "users"
 end

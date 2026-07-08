@@ -3,4 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :records, dependent: :destroy
+  has_many :favorite_players, dependent: :destroy
 end
