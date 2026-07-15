@@ -10,6 +10,13 @@ class FavoritePlayersController < ApplicationController
   end
 
   def create
+    @favorite_player = current_user.favorite_players.build(favorite_player_params)
+
+    if @favorite_player.save
+      redirect_to favorite_players_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -22,5 +29,11 @@ class FavoritePlayersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def favorite_player_params
+    params.require(:favorite_player).permit(:name, :team, :position)
   end
 end
