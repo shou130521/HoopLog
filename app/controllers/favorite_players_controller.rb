@@ -28,6 +28,13 @@ class FavoritePlayersController < ApplicationController
   end
 
   def update
+    @favorite_player = current_user.favorite_players.find(params[:id])
+
+    if @favorite_player.update(favorite_player_params)
+      redirect_to favorite_player_path(@favorite_player)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
