@@ -1,5 +1,17 @@
 <h1>推し選手登録</h1>
 
+<% if @favorite_player.errors.any? %>
+  <div>
+    <h2><%= @favorite_player.errors.count %>件のエラーがあります</h2>
+
+    <ul>
+      <% @favorite_player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @favorite_player, local: true do |form| %>
   <div>
     <%= form.label :name, "選手名" %>
