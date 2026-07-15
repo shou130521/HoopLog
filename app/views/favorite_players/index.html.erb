@@ -5,7 +5,9 @@
 <% if @favorite_players.any? %>
   <% @favorite_players.each do |favorite_player| %>
     <div>
-      <h2><%= favorite_player.name %></h2>
+      <h2>
+        <%= link_to favorite_player.name, favorite_player_path(favorite_player) %>
+      </h2>
       <p>チーム：<%= favorite_player.team %></p>
       <p>ポジション：<%= favorite_player.position %></p>
     </div>
