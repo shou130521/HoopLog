@@ -8,4 +8,11 @@
 
 <%= link_to "編集する", edit_favorite_player_path(@favorite_player) %>
 
+<%= link_to "削除する",
+            favorite_player_path(@favorite_player),
+            data: {
+              turbo_method: :delete,
+              turbo_confirm: "本当に削除しますか？"
+            } %>
+
 <%= link_to "一覧に戻る", favorite_players_path %>

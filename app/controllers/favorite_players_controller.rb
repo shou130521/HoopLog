@@ -38,6 +38,10 @@ class FavoritePlayersController < ApplicationController
   end
 
   def destroy
+    @favorite_player = current_user.favorite_players.find(params[:id])
+    @favorite_player.destroy
+
+    redirect_to favorite_players_path
   end
 
   private
