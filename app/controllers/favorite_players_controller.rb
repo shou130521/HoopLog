@@ -24,6 +24,7 @@ class FavoritePlayersController < ApplicationController
   end
 
   def edit
+    @favorite_player = current_user.favorite_players.find(params[:id])
   end
 
   def update
