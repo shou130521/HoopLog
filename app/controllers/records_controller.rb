@@ -53,7 +53,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:title, :body, :watched_on)
+    params.require(:record).permit(:title, :body, :watched_on, favorite_player_ids: [])
   end
 
   def correct_user
