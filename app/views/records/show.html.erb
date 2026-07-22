@@ -4,6 +4,20 @@
 
 <p><%= @record.body %></p>
 
+<div>
+  <p>応援した推し選手：</p>
+
+  <% if @record.favorite_players.any? %>
+    <ul>
+      <% @record.favorite_players.each do |favorite_player| %>
+        <li><%= favorite_player.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>推し選手は紐付けられていません。</p>
+  <% end %>
+</div>
+
 <% if @record.user == current_user %>
   <%= link_to "編集", edit_record_path(@record) %>
 

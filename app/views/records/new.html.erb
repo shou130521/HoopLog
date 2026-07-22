@@ -28,6 +28,21 @@
   </div>
 
   <div>
+    <%= f.label :favorite_player_ids, "応援した推し選手" %><br>
+
+    <% if @favorite_players.any? %>
+      <%= f.collection_check_boxes :favorite_player_ids, @favorite_players, :id, :name do |b| %>
+        <div>
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>推し選手が登録されていません。</p>
+    <% end %>
+  </div>
+
+  <div>
     <%= f.submit "投稿する" %>
   </div>
 <% end %>

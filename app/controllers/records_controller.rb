@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_record, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
+  before_action :set_favorite_players, only: %i[new create]
 
   def index
     @records = Record.order(created_at: :desc)
@@ -47,8 +48,12 @@ class RecordsController < ApplicationController
     @record = Record.find(params[:id])
   end
 
+  def set_favorite_players
+    @favorite_players = current_user.favorite_players
+  end
+
   def record_params
-    params.require(:record).permit(:title, :body, :watched_on)
+    params.require(:record).permit(:title, :body, :watched_on, favorite_player_ids: [])
   end
 
   def correct_user
