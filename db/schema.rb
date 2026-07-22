@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_07_08_112754) do
+ActiveRecord::Schema[7.1].define(version: 2026_07_22_122909) do
   create_table "favorite_players", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "team"
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.1].define(version: 2026_07_08_112754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_favorite_players_on_user_id"
+  end
+
+  create_table "record_favorite_players", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "record_id", null: false
+    t.bigint "favorite_player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorite_player_id"], name: "index_record_favorite_players_on_favorite_player_id"
+    t.index ["record_id"], name: "index_record_favorite_players_on_record_id"
   end
 
   create_table "records", charset: "utf8mb3", force: :cascade do |t|
@@ -44,5 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_07_08_112754) do
   end
 
   add_foreign_key "favorite_players", "users"
+  add_foreign_key "record_favorite_players", "favorite_players"
+  add_foreign_key "record_favorite_players", "records"
   add_foreign_key "records", "users"
 end
