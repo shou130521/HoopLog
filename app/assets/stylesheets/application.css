@@ -371,6 +371,99 @@ textarea {
   transform: rotate(12deg);
 }
 
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.page-header__eyebrow {
+  margin-bottom: 6px;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.page-header__title {
+  color: var(--color-primary-dark);
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.record-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.record-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(6, 39, 98, 0.14);
+}
+
+.record-card__date {
+  margin-bottom: 12px;
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.record-card__title {
+  margin-bottom: 14px;
+  color: var(--color-primary-dark);
+  font-size: 1.35rem;
+}
+
+.record-card__title a {
+  color: inherit;
+}
+
+.record-card__body {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  color: var(--color-text-light);
+}
+
+.record-card__link {
+  align-self: flex-start;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.empty-state__icon {
+  margin-bottom: 20px;
+  font-size: 4rem;
+}
+
+.empty-state__title {
+  margin-bottom: 10px;
+  color: var(--color-primary-dark);
+}
+
+.empty-state__text {
+  margin-bottom: 24px;
+  color: var(--color-text-light);
+}
+
 @media (max-width: 600px) {
   main {
     width: min(100% - 24px, 960px);
@@ -440,5 +533,22 @@ textarea {
   .home-hero__circle--large {
     width: 130px;
     height: 130px;
+  }
+
+  .page-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .page-header .button {
+    width: 100%;
+  }
+
+  .record-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record-card {
+    min-height: auto;
   }
 }

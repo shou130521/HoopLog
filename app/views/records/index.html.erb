@@ -1,9 +1,50 @@
-<h1>観戦記録一覧</h1>
+<section class="page-header">
+  <div>
+    <p class="page-header__eyebrow">WATCHING LOG</p>
+    <h1 class="page-header__title">観戦記録</h1>
+  </div>
 
-<% @records.each do |record| %>
-  <h2><%= record.title %></h2>
-  <p><%= record.watched_on %></p>
-  <p><%= truncate(record.body, length: 100) %></p>
+  <%= link_to "新しい記録",
+              new_record_path,
+              class: "button button-accent" %>
+</section>
 
-  <%= link_to "詳細", record_path(record) %>
+<% if @records.any? %>
+  <section class="record-grid">
+    <% @records.each do |record| %>
+      <article class="card record-card">
+        <p class="record-card__date">
+          <%= record.watched_on.strftime("%Y.%m.%d") %>
+        </p>
+
+        <h2 class="record-card__title">
+          <%= link_to record.title, record_path(record) %>
+        </h2>
+
+        <p class="record-card__body">
+          <%= truncate(record.body, length: 80) %>
+        </p>
+
+        <%= link_to "詳しく見る →",
+                    record_path(record),
+                    class: "record-card__link" %>
+      </article>
+    <% end %>
+  </section>
+<% else %>
+  <section class="card empty-state">
+    <div class="empty-state__icon">🏀</div>
+
+    <h2 class="empty-state__title">
+      まだ観戦記録がありません
+    </h2>
+
+    <p class="empty-state__text">
+      最初の観戦記録を残してみましょう。
+    </p>
+
+    <%= link_to "記録を作成する",
+                new_record_path,
+                class: "button button-accent" %>
+  </section>
 <% end %>
