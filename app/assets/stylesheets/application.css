@@ -173,6 +173,69 @@ textarea {
   color: #9b2c2c;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-primary-dark);
+  border-bottom: 4px solid var(--color-accent);
+  box-shadow: 0 4px 16px rgba(6, 39, 98, 0.18);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100% - 32px, 1100px);
+  min-height: 72px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.site-logo:hover {
+  opacity: 1;
+}
+
+.site-logo__ball {
+  font-size: 1.7rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.site-nav__link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 1;
+}
+
+.site-nav__link--logout {
+  color: var(--color-accent);
+}
+
 @media (max-width: 600px) {
   main {
     width: min(100% - 24px, 960px);
@@ -181,5 +244,25 @@ textarea {
 
   .card {
     padding: 18px;
+  }
+
+  .site-header__inner {
+    width: min(100% - 20px, 1100px);
+    min-height: auto;
+    padding: 12px 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .site-nav {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 2px;
+  }
+
+  .site-nav__link {
+    flex-shrink: 0;
+    padding-inline: 12px;
   }
 }

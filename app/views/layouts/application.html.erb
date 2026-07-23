@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hooplog</title>
+    <title>HoopLog</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,16 +11,44 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
-    <% else %>
-      <%= link_to "ログイン", new_user_session_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <%= link_to root_path, class: "site-logo" do %>
+          <span class="site-logo__ball">🏀</span>
+          <span>HoopLog</span>
+        <% end %>
+
+        <nav class="site-nav" aria-label="メインナビゲーション">
+          <% if user_signed_in? %>
+            <%= link_to "ホーム", root_path, class: "site-nav__link" %>
+            <%= link_to "観戦記録", records_path, class: "site-nav__link" %>
+            <%= link_to "推し選手", favorite_players_path, class: "site-nav__link" %>
+            <%= link_to "ログアウト",
+                        destroy_user_session_path,
+                        data: { turbo_method: :delete },
+                        class: "site-nav__link site-nav__link--logout" %>
+          <% else %>
+            <%= link_to "ログイン",
+                        new_user_session_path,
+                        class: "site-nav__link" %>
+            <%= link_to "新規登録",
+                        new_user_registration_path,
+                        class: "button button-accent" %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
     <% end %>
 
-    <%= yield %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
