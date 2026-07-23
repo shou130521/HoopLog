@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_record, only: %i[show edit update destroy]
   before_action :correct_user, only: %i[edit update destroy]
-  before_action :set_favorite_players, only: %i[new create]
+  before_action :set_favorite_players, only: %i[new create edit update]
 
   def index
     @records = Record.order(created_at: :desc)
