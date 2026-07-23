@@ -28,12 +28,14 @@
                         data: { turbo_method: :delete },
                         class: "site-nav__link site-nav__link--logout" %>
           <% else %>
-            <%= link_to "ログイン",
-                        new_user_session_path,
-                        class: "site-nav__link" %>
+          
             <%= link_to "新規登録",
                         new_user_registration_path,
                         class: "button button-accent" %>
+
+            <%= link_to "ログイン",
+                        new_user_session_path,
+                        class: "site-nav__link" %>
           <% end %>
         </nav>
       </div>

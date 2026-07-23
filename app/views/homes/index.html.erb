@@ -1,3 +1,43 @@
-<h1>HoopLog</h1>
+<section class="home-hero">
+  <div class="home-hero__content">
+    <p class="home-hero__eyebrow">YOUR NBA MEMORY</p>
 
-<p>NBAファンのための観戦記録アプリ</p>
+    <h1 class="home-hero__title">
+      HoopLog
+    </h1>
+
+    <p class="home-hero__description">
+      NBA観戦記録アプリ
+    </p>
+
+    <div class="home-hero__actions">
+      <% if user_signed_in? %>
+        <%= link_to "記録する",
+                    new_record_path,
+                    class: "button button-accent home-hero__primary-button" %>
+
+        <%= link_to "記録を見る",
+                    records_path,
+                    class: "button home-hero__secondary-button" %>
+      <% else %>
+        <%= link_to "はじめる",
+                    new_user_registration_path,
+                    class: "button button-accent home-hero__primary-button" %>
+
+        <%= link_to "ログイン",
+                    new_user_session_path,
+                    class: "button home-hero__secondary-button" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="home-hero__visual" aria-hidden="true">
+    <span class="home-hero__circle home-hero__circle--large"></span>
+    <span class="home-hero__circle home-hero__circle--small"></span>
+    <span class="home-hero__spark">✦</span>
+
+    <div class="home-hero__ball-wrapper">
+      <span class="home-hero__ball">🏀</span>
+    </div>
+  </div>
+</section>
