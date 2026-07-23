@@ -1,34 +1,58 @@
-<h1><%= @record.title %></h1>
+<%= link_to "← 観戦記録一覧に戻る",
+            records_path,
+            class: "back-link" %>
 
-<p>観戦日：<%= @record.watched_on %></p>
+<article class="card record-detail">
+  <header class="record-detail__header">
+    <div>
+      <p class="record-detail__eyebrow">WATCHING LOG</p>
+      <h1 class="record-detail__title"><%= @record.title %></h1>
+    </div>
 
-<p><%= @record.body %></p>
+    <time class="record-detail__date">
+      <%= @record.watched_on.strftime("%Y.%m.%d") %>
+    </time>
+  </header>
 
-<div>
-  <p>応援した推し選手：</p>
+  <section class="record-detail__section">
+    <h2 class="record-detail__heading">観戦メモ</h2>
 
-  <% if @record.favorite_players.any? %>
-    <ul>
-      <% @record.favorite_players.each do |favorite_player| %>
-        <li><%= favorite_player.name %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>推し選手は紐付けられていません。</p>
+    <div class="record-detail__body">
+      <%= simple_format(@record.body) %>
+    </div>
+  </section>
+
+  <section class="record-detail__section">
+    <h2 class="record-detail__heading">応援した推し選手</h2>
+
+    <% if @record.favorite_players.any? %>
+      <div class="player-tags">
+        <% @record.favorite_players.each do |favorite_player| %>
+          <span class="player-tag">
+            ⭐ <%= favorite_player.name %>
+          </span>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="record-detail__empty">
+        推し選手は紐付けられていません。
+      </p>
+    <% end %>
+  </section>
+
+  <% if @record.user == current_user %>
+    <footer class="record-detail__actions">
+      <%= link_to "編集する",
+                  edit_record_path(@record),
+                  class: "button button-primary" %>
+
+      <%= link_to "削除する",
+                  record_path(@record),
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "この観戦記録を削除しますか？"
+                  },
+                  class: "button button-danger" %>
+    </footer>
   <% end %>
-</div>
-
-<% if @record.user == current_user %>
-  <%= link_to "編集", edit_record_path(@record) %>
-
-  <%= link_to "削除",
-              record_path(@record),
-              data: {
-                turbo_method: :delete,
-                turbo_confirm: "この観戦記録を削除しますか？"
-              } %>
-<% end %>
-
-<br>
-
-<%= link_to "一覧に戻る", records_path %>
+</article>

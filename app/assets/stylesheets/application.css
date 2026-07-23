@@ -464,6 +464,107 @@ textarea {
   color: var(--color-text-light);
 }
 
+.back-link {
+  display: inline-flex;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.record-detail {
+  padding: 40px;
+}
+
+.record-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.record-detail__eyebrow {
+  margin-bottom: 8px;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.record-detail__title {
+  color: var(--color-primary-dark);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.25;
+}
+
+.record-detail__date {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  background: rgba(6, 39, 98, 0.08);
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.record-detail__section {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.record-detail__heading {
+  margin-bottom: 16px;
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+}
+
+.record-detail__body {
+  color: var(--color-text);
+  line-height: 1.9;
+}
+
+.record-detail__body p:last-child {
+  margin-bottom: 0;
+}
+
+.record-detail__empty {
+  color: var(--color-text-light);
+}
+
+.player-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.player-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  background: rgba(247, 198, 0, 0.18);
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.record-detail__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 28px;
+}
+
+.button-danger {
+  background: #fff1f1;
+  color: #c53030;
+}
+
+.button-danger:hover {
+  background: #ffe0e0;
+}
+
 @media (max-width: 600px) {
   main {
     width: min(100% - 24px, 960px);
@@ -550,5 +651,25 @@ textarea {
 
   .record-card {
     min-height: auto;
+  }
+
+  .record-detail {
+    padding: 24px 20px;
+  }
+
+  .record-detail__header {
+    flex-direction: column;
+  }
+
+  .record-detail__date {
+    align-self: flex-start;
+  }
+
+  .record-detail__actions {
+    flex-direction: column;
+  }
+
+  .record-detail__actions .button {
+    width: 100%;
   }
 }
